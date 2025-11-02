@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 import os
 import tempfile
@@ -57,11 +58,11 @@ def start_command(update, context):
     text = (
         "Hey! I’m your Subtitle Stylist 🎬✨\n\n"
         "What I do:\n"
-        "• Convert .srt / .vtt → styled .ass\n"
+        "• Convert .srt or .vtt or .ass → styled .ass\n"
         "• Ready-made themes: Pika 1080p / 720p / 480p, Shrouding The Heavens, Tales Of Herding Gods\n"
         "• Auto title cards & soft watermark (theme-specific)\n\n"
         "How to use:\n"
-        "1) Send me a .srt or .vtt file\n"
+        "1) Send me a .srt or .vtt or .ass file\n"
         "2) Choose your style via /setting\n"
         "3) I’ll return the .ass file—ready to mux\n\n"
         "Tips:\n"
@@ -76,7 +77,7 @@ def help_command(update, context):
     update.message.reply_text(
         "Need help?\n\n"
         "• Use /setting to pick a theme\n"
-        "• Send .srt or .vtt files only\n"
+        "• Send .srt or .vtt or .ass files only\n"
         "• I’ll return a themed .ass file\n"
     )
 
@@ -108,8 +109,8 @@ def handle_document(update, context):
     filename = doc.file_name
     ext      = os.path.splitext(filename)[1].lower()
 
-    if ext not in (".srt", ".vtt"):
-        return update.message.reply_text("🚫 Please send a .srt or .vtt file.")
+    if ext not in (".srt", ".vtt", ".ass"):
+        return update.message.reply_text("🚫 Please send a .srt or .vtt or .ass file.")
 
     in_path = out_path = None
     try:
