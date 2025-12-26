@@ -308,11 +308,6 @@ def handle_document(update, context):
                 line.style = styles[0].name
 
         elif theme == "Immortal Doctor":
-            # (a) Delete the first TWO subtitle lines if present
-            for _ in range(3):
-                if subs.events:
-                    subs.events.pop(0)
-        
             # (b) Insert the same “title/telegram” line behavior used in Tales
             if subs.events:
                 first_start = subs.events[0].start
